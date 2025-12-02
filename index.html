@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surtilentes - Óptica en Cartagena</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top animate__animated animate__fadeInDown">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <i class="fas fa-glasses me-2"></i>Surtilentes
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/clasicas/clasicas1.jpg" class="d-block w-100" alt="Gafas de Sol Clásicas">
+                    <div class="carousel-caption d-none d-md-block">
+                        <i class="fas fa-glasses animate__animated animate__bounce" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1rem;"></i>
+                        <h1>Bienvenidos a Surtilentes</h1>
+                        <p>Tu visión es nuestro compromiso - Óptica profesional en Cartagena</p>
+                        <button class="btn btn-custom" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
+                            Ver Catálogo <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/deportivas/gafas1.jpg" class="d-block w-100" alt="Gafas Aviador">
+                    <div class="carousel-caption d-none d-md-block">
+                        <i class="fas fa-glasses animate__animated animate__bounce" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1rem;"></i>
+                        <h1>Estilo y Protección</h1>
+                        <p>Gafas de sol con protección UV400 y diseños modernos</p>
+                        <button class="btn btn-custom" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
+                            Ver Catálogo <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/modernas/modernas1.jpg" class="d-block w-100" alt="Gafas Premium">
+                    <div class="carousel-caption d-none d-md-block">
+                        <i class="fas fa-glasses animate__animated animate__bounce" style="font-size: 4rem; color: #06b6d4; margin-bottom: 1rem;"></i>
+                        <h1>Colección Premium</h1>
+                        <p>Calidad y estilo para cada ocasión</p>
+                        <button class="btn btn-custom" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">
+                            Ver Catálogo <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="catalogo" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Nuestro Catálogo</h2>
+            
+            <div class="category-block animate__animated animate__fadeIn">
+                <h3 class="category-title">Gafas Clasicas</h3>
+                <div class="row" id="lista-clasicas">
+                    <div class_ ="col-12 text-center"><p>Cargando productos...</p></div>
+                </div>
+                <a href="catalogo_clasicas.html" class="btn-ver-mas">
+                    Ver todas las gafas Clasicas <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <div class="category-block animate__animated animate__fadeIn">
+                <h3 class="category-title">Gafas Modernas</h3>
+                <div class="row" id="lista-modernas">
+                    </div>
+                <a href="catalogo_modernas.html" class="btn-ver-mas">
+                    Ver todas las gafas de lectura <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <div class="category-block animate__animated animate__fadeIn">
+                <h3 class="category-title">Gafas Deportivas</h3>
+                <div class="row" id="lista-deportivas">
+                    </div>
+                <a href="catalogo_deportivas.html" class="btn-ver-mas">
+                    Ver todas las gafas deportivas <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="section">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Sobre Nosotros</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="info-box text-center">
+                        <h3><i class="fas fa-heart me-2"></i>Nuestros Valores</h3>
+                        <p><strong>Calidad:</strong> Productos certificados.</p>
+                        <p><strong>Profesionalismo:</strong> Personal capacitado.</p>
+                        <p><strong>Compromiso:</strong> Salud visual prioritaria.</p>
+                        <p><strong>Innovación:</strong> Tecnología óptica avanzada.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h3><i class="fas fa-bullseye me-2"></i>Nuestra Misión</h3>
+                        <p>En Surtilentes nos dedicamos a brindar soluciones visuales de la más alta calidad a nuestros clientes en Cartagena.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h3><i class="fas fa-eye me-2"></i>Nuestra Visión</h3>
+                        <p>Ser la óptica líder en Cartagena, reconocida por nuestra excelencia en el servicio y calidad de productos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-info">
+        <div class="container">
+            <h2 class="section-title text-white animate__animated animate__fadeIn">Contáctanos</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Ubicación</h4>
+                        <p>Centro Histórico de Cartagena<br>Carrera 9 #25-48<br>Cartagena de Indias, Colombia</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Teléfono</h4>
+                        <p>+57 (5) 664-2580<br>WhatsApp: +57 310 555 1234</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Horario</h4>
+                        <p>Lunes a Viernes: 8:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 5:00 PM<br>Domingos: Cerrado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fas fa-glasses me-2"></i>Surtilentes</h4>
+                    <p>Tu visión, nuestra pasión</p>
+                    <div class="social-icons" style="font-size: 1.5rem; margin: 1rem 0;">
+                        <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p>&copy; 2025 Surtilentes - Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // 🚨 URL ACTUALIZADA con la que proporcionaste
+        const API_URL = 'https://script.google.com/macros/s/AKfycbyit1wTJy5k9YSlFfmo64vKj0RQjAHCgNPmc6rufbjiIFI7SlR7bbAYg8COMxy-hmCvTw/exec'; 
+
+        // 1. Cuando la página cargue, busca los productos
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAndRenderProducts();
+        });
+
+        // 2. Función para ir a buscar los datos a Google Sheets
+        async function fetchAndRenderProducts() {
+            // Seleccionamos los 3 contenedores que dejamos vacíos
+            const clasicasContainer = document.getElementById('lista-clasicas');
+            const modernasContainer = document.getElementById('lista-modernas');
+            const deportivasContainer = document.getElementById('lista-deportivas');
+            
+            try {
+                const response = await fetch(API_URL); // Llama a la función doGet()
+                const products = await response.json();
+                
+                // Limpiar los contenedores
+                clasicasContainer.innerHTML = '';
+                modernasContainer.innerHTML = '';
+                deportivasContainer.innerHTML = '';
+
+                // 3. Recorrer los productos y "pintarlos"
+                products.forEach(product => {
+                    // (Opcional: Añadí 'mb-4' para espacio, 'h-100' para tarjetas iguales, y 'd-flex' para alinear el botón)
+                    const productCardHtml = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card-product h-100">
+                                <img src="${product.image_url}" alt="${product.title}" class="img-fluid">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">${product.title}</h5>
+                                    <p class="text-muted">${product.description}</p>
+                                    <p class="price">$${Number(product.price).toLocaleString('es-CO')}</p>
+                                    
+                                    <a href="${product.id}.html" class="btn-custom w-100 text-center mt-auto">
+                                        Consultar <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 4. Poner el producto en la categoría correcta
+                    switch (product.category) {
+                        case 'clasicas':
+                            clasicasContainer.innerHTML += productCardHtml;
+                            break;
+                        case 'modernas':
+                            modernasContainer.innerHTML += productCardHtml;
+                            break;
+                        case 'deportivas':
+                            deportivasContainer.innerHTML += productCardHtml;
+                            break;
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
+                if(clasicasContainer) clasicasContainer.innerHTML = '<p class="text-center text-danger">Error al cargar productos. Revisa la consola y la URL de la API.</p>';
+            }
+        }
+    </script>
+    </body>
+</html>
