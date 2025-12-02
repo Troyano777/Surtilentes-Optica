@@ -85,7 +85,7 @@
             <div class="category-block animate__animated animate__fadeIn">
                 <h3 class="category-title">Gafas Clasicas</h3>
                 <div class="row" id="lista-clasicas">
-                    <div class_ ="col-12 text-center"><p>Cargando productos...</p></div>
+                    <div class="col-12 text-center"><p>Cargando productos...</p></div>
                 </div>
                 <a href="catalogo_clasicas.html" class="btn-ver-mas">
                     Ver todas las gafas Clasicas <i class="fas fa-arrow-right ms-2"></i>
@@ -95,7 +95,8 @@
             <div class="category-block animate__animated animate__fadeIn">
                 <h3 class="category-title">Gafas Modernas</h3>
                 <div class="row" id="lista-modernas">
-                    </div>
+                    <div class="col-12 text-center"><p>Cargando productos...</p></div>
+                </div>
                 <a href="catalogo_modernas.html" class="btn-ver-mas">
                     Ver todas las gafas de lectura <i class="fas fa-arrow-right ms-2"></i>
                 </a>
@@ -104,7 +105,8 @@
             <div class="category-block animate__animated animate__fadeIn">
                 <h3 class="category-title">Gafas Deportivas</h3>
                 <div class="row" id="lista-deportivas">
-                    </div>
+                    <div class="col-12 text-center"><p>Cargando productos...</p></div>
+                </div>
                 <a href="catalogo_deportivas.html" class="btn-ver-mas">
                     Ver todas las gafas deportivas <i class="fas fa-arrow-right ms-2"></i>
                 </a>
@@ -207,6 +209,90 @@
         // 🚨 URL ACTUALIZADA con la que proporcionaste
         const API_URL = 'https://script.google.com/macros/s/AKfycbyit1wTJy5k9YSlFfmo64vKj0RQjAHCgNPmc6rufbjiIFI7SlR7bbAYg8COMxy-hmCvTw/exec'; 
 
+        const FALLBACK_PRODUCTS = [
+            {
+                id: 'gafas-de-clasica1',
+                title: 'Gafas Cat Eye Carolina Herrera',
+                description: 'Montura oftálmica de acetato estilo cat eye.',
+                price: 79000,
+                image_url: './img/clasicas/clasicas1.jpg',
+                category: 'clasicas',
+                detail_url: 'gafas-de-clasica1.html'
+            },
+            {
+                id: 'gafas-de-clasica2',
+                title: 'Montura Swarovski Cuadrada',
+                description: 'Diseño clásico con detalles metálicos premium.',
+                price: 75000,
+                image_url: './img/clasicas/casicas2.jpg',
+                category: 'clasicas',
+                detail_url: 'gafas-de-clasica2.html'
+            },
+            {
+                id: 'gafas-de-clasica3',
+                title: 'Montura New Look Transparente',
+                description: 'Acabado cristal ideal para fórmulas claras.',
+                price: 80000,
+                image_url: './img/clasicas/casicas3.jpg',
+                category: 'clasicas',
+                detail_url: 'gafas-de-clasica3.html'
+            },
+            {
+                id: 'gafas-de-modernas1',
+                title: 'Montura Geométrica Hexa',
+                description: 'Diseño ultraligero con formas modernas.',
+                price: 75000,
+                image_url: './img/modernas/modernas1.jpg',
+                category: 'modernas',
+                detail_url: 'gafas-de-modernas1.html'
+            },
+            {
+                id: 'gafas-de-modernas2',
+                title: 'Gafas de Sol Futura',
+                description: 'Lentes espejados con protección UV400.',
+                price: 78000,
+                image_url: './img/modernas/modernas2.jpg',
+                category: 'modernas',
+                detail_url: 'gafas-de-modernas2.html'
+            },
+            {
+                id: 'gafas-de-modernas3',
+                title: 'Montura Wireframe Transparente',
+                description: 'Marco minimalista en colores traslúcidos.',
+                price: 65000,
+                image_url: './img/modernas/modernas3.jpg',
+                category: 'modernas',
+                detail_url: 'gafas-de-modernas3.html'
+            },
+            {
+                id: 'gafas-de-deportivas1',
+                title: 'Gafas Ciclismo Pro',
+                description: 'Lente intercambiable para alto rendimiento.',
+                price: 75000,
+                image_url: './img/deportivas/gafas1.jpg',
+                category: 'deportivas',
+                detail_url: 'gafas-de-deportivas1.html'
+            },
+            {
+                id: 'gafas-de-deportivas2',
+                title: 'Lentes Running Ultraligeros',
+                description: 'Ventilación activa para entrenamientos intensos.',
+                price: 68000,
+                image_url: './img/deportivas/gafas2.jpg',
+                category: 'deportivas',
+                detail_url: 'gafas-de-deportivas2.html'
+            },
+            {
+                id: 'gafas-de-deportivas3',
+                title: 'Gafas Natación Antiempañamiento',
+                description: 'Cobertura curva con sellado resistente al agua.',
+                price: 62000,
+                image_url: './img/deportivas/gafas3.jpg',
+                category: 'deportivas',
+                detail_url: 'gafas-de-deportivas3.html'
+            }
+        ];
+
         // 1. Cuando la página cargue, busca los productos
         document.addEventListener('DOMContentLoaded', () => {
             fetchAndRenderProducts();
@@ -214,57 +300,108 @@
 
         // 2. Función para ir a buscar los datos a Google Sheets
         async function fetchAndRenderProducts() {
-            // Seleccionamos los 3 contenedores que dejamos vacíos
             const clasicasContainer = document.getElementById('lista-clasicas');
             const modernasContainer = document.getElementById('lista-modernas');
             const deportivasContainer = document.getElementById('lista-deportivas');
-            
-            try {
-                const response = await fetch(API_URL); // Llama a la función doGet()
-                const products = await response.json();
-                
-                // Limpiar los contenedores
+
+            if (!clasicasContainer || !modernasContainer || !deportivasContainer) {
+                console.error('Error: no se encontraron los contenedores del catálogo.');
+                return;
+            }
+
+            const ensureContent = (container) => {
+                if (!container.innerHTML.trim()) {
+                    container.innerHTML = '<div class="col-12 text-center"><p class="text-muted">Sin productos en esta categoría.</p></div>';
+                }
+            };
+
+            const renderProducts = (productsSource) => {
                 clasicasContainer.innerHTML = '';
                 modernasContainer.innerHTML = '';
                 deportivasContainer.innerHTML = '';
 
-                // 3. Recorrer los productos y "pintarlos"
-                products.forEach(product => {
-                    // (Opcional: Añadí 'mb-4' para espacio, 'h-100' para tarjetas iguales, y 'd-flex' para alinear el botón)
+                productsSource.forEach(product => {
+                    const title = product?.title || 'Producto sin título';
+                    const description = product?.description || '';
+                    const imageUrl = product?.image_url || './img/logo.jpg';
+                    const price = Number(product?.price) || 0;
+                    const formattedPrice = price
+                        ? `$${price.toLocaleString('es-CO')}`
+                        : '';
+                    const detailUrl = product?.detail_url || `${product?.id || 'producto'}.html`;
+                    const category = (product?.category || '').toLowerCase();
+
                     const productCardHtml = `
                         <div class="col-md-4 mb-4">
                             <div class="card-product h-100">
-                                <img src="${product.image_url}" alt="${product.title}" class="img-fluid">
+                                <img src="${imageUrl}" alt="${title}" class="img-fluid">
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${product.title}</h5>
-                                    <p class="text-muted">${product.description}</p>
-                                    <p class="price">$${Number(product.price).toLocaleString('es-CO')}</p>
-                                    
-                                    <a href="${product.id}.html" class="btn-custom w-100 text-center mt-auto">
+                                    <h5 class="card-title">${title}</h5>
+                                    <p class="text-muted">${description}</p>
+                                    ${formattedPrice ? `<p class="price">${formattedPrice}</p>` : ''}
+                                    <a href="${detailUrl}" class="btn-custom w-100 text-center mt-auto">
                                         Consultar <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     `;
-                    
-                    // 4. Poner el producto en la categoría correcta
-                    switch (product.category) {
+
+                    switch (category) {
                         case 'clasicas':
-                            clasicasContainer.innerHTML += productCardHtml;
+                            clasicasContainer.insertAdjacentHTML('beforeend', productCardHtml);
                             break;
                         case 'modernas':
-                            modernasContainer.innerHTML += productCardHtml;
+                            modernasContainer.insertAdjacentHTML('beforeend', productCardHtml);
                             break;
                         case 'deportivas':
-                            deportivasContainer.innerHTML += productCardHtml;
+                            deportivasContainer.insertAdjacentHTML('beforeend', productCardHtml);
+                            break;
+                        default:
+                            console.warn('Categoría desconocida para el producto, se ignora:', product);
                             break;
                     }
                 });
 
+                ensureContent(clasicasContainer);
+                ensureContent(modernasContainer);
+                ensureContent(deportivasContainer);
+            };
+
+            const loadingMarkup = '<div class="col-12 text-center"><p>Cargando productos...</p></div>';
+            clasicasContainer.innerHTML = loadingMarkup;
+            modernasContainer.innerHTML = loadingMarkup;
+            deportivasContainer.innerHTML = loadingMarkup;
+
+            try {
+                const response = await fetch(API_URL);
+                console.log('Estado HTTP:', response.status, response.statusText);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const payload = await response.json();
+                console.log('Payload recibido:', payload);
+
+                let products = Array.isArray(payload)
+                    ? payload
+                    : payload?.data || payload?.items || payload?.products || [];
+
+                if (!Array.isArray(products)) {
+                    products = [];
+                }
+
+                if (products.length === 0) {
+                    console.warn('La API no devolvió productos, se usará el catálogo local.');
+                    renderProducts(FALLBACK_PRODUCTS);
+                } else {
+                    renderProducts(products);
+                }
+
             } catch (error) {
                 console.error('Error al cargar productos:', error);
-                if(clasicasContainer) clasicasContainer.innerHTML = '<p class="text-center text-danger">Error al cargar productos. Revisa la consola y la URL de la API.</p>';
+                renderProducts(FALLBACK_PRODUCTS);
             }
         }
     </script>
